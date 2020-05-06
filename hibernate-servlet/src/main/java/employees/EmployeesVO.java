@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import officers.OfficesVO;
+import offices.OfficesVO;
 
 /**
  * @author akash

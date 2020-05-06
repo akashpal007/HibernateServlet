@@ -1,4 +1,4 @@
-package Products;
+package products;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import ProductLines.ProductLinesVO;
+import productLines.ProductLinesVO;
 /**
  * @author Akash
  *

@@ -6,8 +6,8 @@ import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import Products.ProductsVO;
 import orders.OrdersVO;
+import products.ProductsVO;
 /**
  * @author Akash
  *

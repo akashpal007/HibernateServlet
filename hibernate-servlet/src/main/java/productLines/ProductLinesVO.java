@@ -1,4 +1,4 @@
-package ProductLines;
+package productLines;
 
 import java.sql.Blob;
 
