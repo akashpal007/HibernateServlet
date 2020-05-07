@@ -8,8 +8,7 @@ import java.io.Serializable;
 import customers.CustomersVO;
 
 /**
- * @author Akash 
- * In order to define the composite primary keys, we should follow
+ * @author Akash In order to define the composite primary keys, we should follow
  *         some rules: The composite primary key class must be public It must
  *         have a no-arg constructor It must define equals() and hashCode()
  *         methods It must be Serializable
@@ -25,29 +24,14 @@ public class PaymentsPKConst implements Serializable {
 	/**
 	 * 
 	 */
-
-	private CustomersVO customerNumber;
+	private CustomersVO customersVO;
 
 	private String checkNumber;
 
 	// Constructor
-	public PaymentsPKConst(CustomersVO customerNumber, String checkNumber) {
-		this.customerNumber = customerNumber;
+	public PaymentsPKConst(CustomersVO customersVO, String checkNumber) {
+		this.customersVO = customersVO;
 		this.checkNumber = checkNumber;
-	}
-
-	/**
-	 * @return the customerNumber
-	 */
-	public CustomersVO getCustomerNumber() {
-		return customerNumber;
-	}
-
-	/**
-	 * @return the checkNumber
-	 */
-	public String getCheckNumber() {
-		return checkNumber;
 	}
 
 	@Override
@@ -55,7 +39,7 @@ public class PaymentsPKConst implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((checkNumber == null) ? 0 : checkNumber.hashCode());
-		result = prime * result + ((customerNumber == null) ? 0 : customerNumber.hashCode());
+		result = prime * result + ((customersVO == null) ? 0 : customersVO.hashCode());
 		return result;
 	}
 
@@ -73,10 +57,10 @@ public class PaymentsPKConst implements Serializable {
 				return false;
 		} else if (!checkNumber.equals(other.checkNumber))
 			return false;
-		if (customerNumber == null) {
-			if (other.customerNumber != null)
+		if (customersVO == null) {
+			if (other.customersVO != null)
 				return false;
-		} else if (!customerNumber.equals(other.customerNumber))
+		} else if (!customersVO.equals(other.customersVO))
 			return false;
 		return true;
 	}

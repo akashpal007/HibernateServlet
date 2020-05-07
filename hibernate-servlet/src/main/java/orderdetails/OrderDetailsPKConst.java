@@ -27,37 +27,37 @@ public class OrderDetailsPKConst implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "orderNumber")
-	private OrdersVO orderNumber;
+	private OrdersVO ordersVO;
 	
 	@ManyToOne
-	@JoinColumn(name = "orderNumber")
-	private ProductsVO productCode;
+	@JoinColumn(name = "productCode")
+	private ProductsVO productsVO;
 
-	public OrderDetailsPKConst(OrdersVO orderNumber, ProductsVO productCode) {
-		this.orderNumber = orderNumber;
-		this.productCode = productCode;
+	public OrderDetailsPKConst(OrdersVO ordersVO, ProductsVO productsVO) {
+		this.ordersVO = ordersVO;
+		this.productsVO = productsVO;
 	}
 
 	/**
 	 * @return the orderNumber
 	 */
 	public OrdersVO getOrderNumber() {
-		return orderNumber;
+		return ordersVO;
 	}
 
 	/**
 	 * @return the productCode
 	 */
 	public ProductsVO getProductCode() {
-		return productCode;
+		return productsVO;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((orderNumber == null) ? 0 : orderNumber.hashCode());
-		result = prime * result + ((productCode == null) ? 0 : productCode.hashCode());
+		result = prime * result + ((ordersVO == null) ? 0 : ordersVO.hashCode());
+		result = prime * result + ((productsVO == null) ? 0 : productsVO.hashCode());
 		return result;
 	}
 
@@ -70,15 +70,15 @@ public class OrderDetailsPKConst implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		OrderDetailsPKConst other = (OrderDetailsPKConst) obj;
-		if (orderNumber == null) {
-			if (other.orderNumber != null)
+		if (ordersVO == null) {
+			if (other.ordersVO != null)
 				return false;
-		} else if (!orderNumber.equals(other.orderNumber))
+		} else if (!ordersVO.equals(other.ordersVO))
 			return false;
-		if (productCode == null) {
-			if (other.productCode != null)
+		if (productsVO == null) {
+			if (other.productsVO != null)
 				return false;
-		} else if (!productCode.equals(other.productCode))
+		} else if (!productsVO.equals(other.productsVO))
 			return false;
 		return true;
 	}

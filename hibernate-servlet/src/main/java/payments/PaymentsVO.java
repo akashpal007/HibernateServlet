@@ -23,8 +23,7 @@ public class PaymentsVO {
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "customerNumber")
-	@Column(name = "customerNumber", columnDefinition = "int(11) NOT NULL")
-	private CustomersVO customerNumber;
+	private CustomersVO customersVO;
 
 	@Id
 	@Column(name = "checkNumber", columnDefinition = "varchar(50) NOT NULL")
@@ -37,10 +36,17 @@ public class PaymentsVO {
 	private double amount;
 
 	/**
-	 * @return the customerNumber
+	 * @return the customersVO
 	 */
-	public CustomersVO getCustomerNumber() {
-		return customerNumber;
+	public CustomersVO getCustomersVO() {
+		return customersVO;
+	}
+
+	/**
+	 * @param customersVO the customersVO to set
+	 */
+	public void setCustomersVO(CustomersVO customersVO) {
+		this.customersVO = customersVO;
 	}
 
 	/**
@@ -51,31 +57,17 @@ public class PaymentsVO {
 	}
 
 	/**
-	 * @return the paymentDate
-	 */
-	public Date getPaymentDate() {
-		return paymentDate;
-	}
-
-	/**
-	 * @return the amount
-	 */
-	public double getAmount() {
-		return amount;
-	}
-
-	/**
-	 * @param customerNumber the customerNumber to set
-	 */
-	public void setCustomerNumber(CustomersVO customerNumber) {
-		this.customerNumber = customerNumber;
-	}
-
-	/**
 	 * @param checkNumber the checkNumber to set
 	 */
 	public void setCheckNumber(String checkNumber) {
 		this.checkNumber = checkNumber;
+	}
+
+	/**
+	 * @return the paymentDate
+	 */
+	public Date getPaymentDate() {
+		return paymentDate;
 	}
 
 	/**
@@ -86,9 +78,17 @@ public class PaymentsVO {
 	}
 
 	/**
+	 * @return the amount
+	 */
+	public double getAmount() {
+		return amount;
+	}
+
+	/**
 	 * @param amount the amount to set
 	 */
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+
 }

@@ -1,5 +1,6 @@
 package orderdetails;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -13,7 +14,14 @@ import javax.persistence.Table;
 public class OrderDetailsVO {
 	@EmbeddedId
 	private OrderDetailsPKConst pkConst;
+	
+	@Column(name = "quantityOrdered", columnDefinition ="int(11) NOT NULL")
 	private double quantityOrdered;
+	
+	@Column(name = "priceEach", columnDefinition ="decimal(10,2) NOT NULL")
+	private double priceEach;
+	
+	@Column(name = "orderLineNumber", columnDefinition ="smallint(6) NOT NULL")
 	private int orderLineNumber;
 
 	/**
@@ -35,6 +43,20 @@ public class OrderDetailsVO {
 	 */
 	public int getOrderLineNumber() {
 		return orderLineNumber;
+	}
+
+	/**
+	 * @return the priceEach
+	 */
+	public double getPriceEach() {
+		return priceEach;
+	}
+
+	/**
+	 * @param priceEach the priceEach to set
+	 */
+	public void setPriceEach(double priceEach) {
+		this.priceEach = priceEach;
 	}
 
 	/**
