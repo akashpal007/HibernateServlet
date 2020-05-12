@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body> 
 	<nav class="navbar navbar-expand-lg navbar-light bg-primary mb-3">
 		<a class="navbar-brand text-light" href="index.jsp">Hibernate Home</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -25,11 +26,11 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
-				<li class="nav-item active"><a class="nav-link text-light" href="#">DevTool
-						<span class="sr-only">(current)</span>
+				<li class="nav-item active"><a class="nav-link text-light"
+					href="#">DevTool <span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link text-light" href="admin.jsp">Admin Account</a>
-				</li>
+				<li class="nav-item"><a class="nav-link text-light"
+					href="admin.jsp">Admin Account</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -47,7 +48,8 @@
 			<div id="collapse1" class="collapse" aria-labelledby="headingOne"
 				data-parent="#accordion">
 				<div class="card-body">
-					#Customers# <br> <a href="#" class="btn btn-primary">Fetch
+					<jsp:include page="inc/customers-inc.jsp" />  
+					<br> <a href="customersselectall" class="btn btn-primary">Fetch
 						Again</a>
 				</div>
 			</div>
@@ -64,7 +66,8 @@
 			<div id="collapse2" class="collapse" aria-labelledby="headingOne"
 				data-parent="#accordion">
 				<div class="card-body">
-					#Employees# <br> <a href="#" class="btn btn-primary">Fetch
+					<jsp:include page="inc/employees-inc.jsp" /> 
+					<br> <a href="employeesselectall" class="btn btn-primary">Fetch
 						Again</a>
 				</div>
 			</div>
@@ -81,7 +84,8 @@
 			<div id="collapse3" class="collapse" aria-labelledby="headingOne"
 				data-parent="#accordion">
 				<div class="card-body">
-					#Offices# <br> <a href="#" class="btn btn-primary">Fetch
+					<jsp:include page="inc/offices-inc.jsp" /> 
+					<br> <a href="officesselectall" class="btn btn-primary">Fetch
 						Again</a>
 				</div>
 			</div>
@@ -98,7 +102,8 @@
 			<div id="collapse4" class="collapse" aria-labelledby="headingOne"
 				data-parent="#accordion">
 				<div class="card-body">
-					#Orders# <br> <a href="#" class="btn btn-primary">Fetch
+					<jsp:include page="inc/orders-inc.jsp" /> 
+					<br> <a href="ordersselectall" class="btn btn-primary">Fetch
 						Again</a>
 				</div>
 			</div>
@@ -115,7 +120,8 @@
 			<div id="collapse5" class="collapse" aria-labelledby="headingOne"
 				data-parent="#accordion">
 				<div class="card-body">
-					#Order Details# <br> <a href="#" class="btn btn-primary">Fetch
+					<jsp:include page="inc/orderdetails-inc.jsp" /> 
+					<br> <a href="orderdetailsselectall" class="btn btn-primary">Fetch
 						Again</a>
 				</div>
 			</div>
@@ -132,7 +138,8 @@
 			<div id="collapse6" class="collapse" aria-labelledby="headingOne"
 				data-parent="#accordion">
 				<div class="card-body">
-					#Payments# <br> <a href="#" class="btn btn-primary">Fetch
+					<jsp:include page="inc/payments-inc.jsp" /> 
+					<br> <a href="paymentsselectall" class="btn btn-primary">Fetch
 						Again</a>
 				</div>
 			</div>
@@ -149,8 +156,9 @@
 			<div id="collapse7" class="collapse" aria-labelledby="headingOne"
 				data-parent="#accordion">
 				<div class="card-body">
-					#Productlines Details# <br> <a href="#"
-						class="btn btn-primary">Fetch Again</a>
+					<jsp:include page="inc/productlines-inc.jsp" /> 
+					<br> <a href="productlinesselectall" class="btn btn-primary">Fetch
+						Again</a>
 				</div>
 			</div>
 		</div>
@@ -166,7 +174,8 @@
 			<div id="collapse8" class="collapse" aria-labelledby="headingOne"
 				data-parent="#accordion">
 				<div class="card-body">
-					#Products# <br> <a href="#" class="btn btn-primary">Fetch
+					<jsp:include page="inc/products-inc.jsp" /> 
+					<br> <a href="productsselectall" class="btn btn-primary">Fetch
 						Again</a>
 				</div>
 			</div>

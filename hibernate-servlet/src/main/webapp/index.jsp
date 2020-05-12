@@ -95,7 +95,8 @@
 									Account</a></li>
 							<li class="nav-item"><a class="nav-link" href="devtool.jsp">DEV
 									View</a></li>
-							<li class="nav-item"><a class="nav-link" href="https://github.com/akashpal007/HibernateServlet/issues">Submit
+							<li class="nav-item"><a class="nav-link"
+								href="https://github.com/akashpal007/HibernateServlet/issues">Submit
 									Issue</a></li>
 						</ul>
 					</div>
@@ -112,7 +113,49 @@
 			</div>
 			<div id="CustomersTable" class="container-fluid details">
 				<h2>CustomersTable</h2>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col">
+							<div class="card h-100">
+								<div class="card-body">
+									<div class="nav bg-primary px-2 pt-2 text-white">
+										<h4 class="card-title">MySql Create Table</h4>
+									</div>
+									<div class="card-text px-2 pt-2">
+										<code>CREATE TABLE `customers` ( `customerNumber`
+											int(11) NOT NULL, `customerName` varchar(50) NOT NULL,
+											`contactLastName` varchar(50) NOT NULL, `contactFirstName`
+											varchar(50) NOT NULL, `phone` varchar(50) NOT NULL,
+											`addressLine1` varchar(50) NOT NULL, `addressLine2`
+											varchar(50) DEFAULT NULL, `city` varchar(50) NOT NULL,
+											`state` varchar(50) DEFAULT NULL, `postalCode` varchar(15)
+											DEFAULT NULL, `country` varchar(50) NOT NULL,
+											`salesRepEmployeeNumber` int(11) DEFAULT NULL, `creditLimit`
+											decimal(10,2) DEFAULT NULL, PRIMARY KEY (`customerNumber`),
+											KEY `salesRepEmployeeNumber` (`salesRepEmployeeNumber`),
+											CONSTRAINT `customers_ibfk_1` FOREIGN KEY
+											(`salesRepEmployeeNumber`) REFERENCES `employees`
+											(`employeeNumber`) )</code>
+									</div>
+									<br>
+									<a href="#" class="btn btn-primary">See Structure</a>
+								</div>
+							</div>
 
+						</div>
+						<div class="col">
+							<div class="card h-100 ">
+								<div class="card-body">
+									<div class="nav bg-primary px-2 pt-2 text-white">
+										<h4 class="card-title">Hibernate Entity Class</h4>
+									</div>
+									<div class="card-text px-2 pt-2">Some example text some
+										example text. John Doe is an architect and engineer</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div id="EmployeesTable" class="container-fluid details">
 				<h2>EmployeesTable</h2>
