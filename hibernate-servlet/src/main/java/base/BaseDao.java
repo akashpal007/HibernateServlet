@@ -10,7 +10,7 @@ public interface BaseDao<T> {
 	
 	List<T> selectAll() throws DbException;
 	
-	T selectOne() throws DbException;
+	T selectOne(T t) throws DbException;
 	
 	int delete(T t) throws DbException;
 	
