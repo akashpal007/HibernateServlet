@@ -16,4 +16,14 @@ public class OrdersHelper {
 			throw new Exception(e);
 		}
 	}
+	
+	public List<OrdersVO> getFirstFiveOrders() throws Exception {
+		try {
+			OrdersDao dao = getOrdersDao();
+			List<OrdersVO> orderDetails = dao.selectFirstFive();
+			return orderDetails;
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
 }

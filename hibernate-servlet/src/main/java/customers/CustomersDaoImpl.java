@@ -3,14 +3,12 @@ package customers;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import base.DbException;
-import base.GetSessionFactory;
+import base.DbSession;
 
 public class CustomersDaoImpl implements CustomersDao {
-    private SessionFactory sessionFactory = GetSessionFactory.getSessionFactory();
 
 	@Override
 	public int insert(CustomersVO t) throws DbException {
@@ -20,40 +18,26 @@ public class CustomersDaoImpl implements CustomersDao {
 
 	@Override
 	public int update(CustomersVO t) throws DbException {
-		try {
-			Session session = sessionFactory.openSession();
-			session.beginTransaction();
-			
-			Query query = session.createQuery("from CustomersVO");
-			
-			session.getTransaction().commit();
-			session.close();
-			}catch (Exception e) {
-				throw new DbException(e + " Problem in DB Connection or in DB Operation");
-			}
 		return 0;
 	}
 
 	@Override
 	public List<CustomersVO> selectAll() throws DbException {
-		List<CustomersVO> customers =null;
 		try {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		
-		Query query = session.createQuery("from CustomersVO");
-		customers = (List<CustomersVO>) query.getResultList();
-		
-		session.getTransaction().commit();
-		session.close();
-		}catch (Exception e) {
-			throw new DbException(e + " ::#:: Problem in DB connection or in DB operation");
+			List<CustomersVO> customers = null;
+			Session dbSession = DbSession.sessionStart();
+			Query query = dbSession.createQuery("from CustomersVO");
+			customers = (List<CustomersVO>) query.getResultList();
+			// Transaction -> commit() and closing the session
+			DbSession.sessionEnd();
+			return customers;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation");
 		}
-		return customers;
 	}
 
 	@Override
-	public CustomersVO selectOne() throws DbException {
+	public CustomersVO selectOne(CustomersVO customersVO) throws DbException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -62,6 +46,23 @@ public class CustomersDaoImpl implements CustomersDao {
 	public int delete(CustomersVO t) throws DbException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<CustomersVO> selectFirstFive() throws DbException {
+		try {
+			List<CustomersVO> customers = null;
+			Session dbSession = DbSession.sessionStart();
+			Query query = dbSession.createQuery("from CustomersVO");
+			query.setFirstResult(0);
+			query.setMaxResults(5);
+			customers = (List<CustomersVO>) query.getResultList();
+			// Transaction -> commit() and closing the session
+			DbSession.sessionEnd();
+			return customers;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation");
+		}
 	}
 
 }

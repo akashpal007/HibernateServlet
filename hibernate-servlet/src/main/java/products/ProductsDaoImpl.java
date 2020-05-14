@@ -3,14 +3,12 @@ package products;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import base.DbException;
-import base.GetSessionFactory;
+import base.DbSession;
 
 public class ProductsDaoImpl implements ProductsDao {
-	private SessionFactory sessionFactory = GetSessionFactory.getSessionFactory();
 
 	@Override
 	public int insert(ProductsVO t) throws DbException {
@@ -27,22 +25,21 @@ public class ProductsDaoImpl implements ProductsDao {
 	@Override
 	public List<ProductsVO> selectAll() throws DbException {
 		try {
-			Session session = sessionFactory.openSession();
+			Session session = DbSession.sessionStart();
 			session.beginTransaction();
 
 			Query query = session.createQuery("from ProductsVO");
 			List<ProductsVO> products = (List<ProductsVO>) query.getResultList();
 
-			session.getTransaction().commit();
-			session.close();
+			DbSession.sessionEnd();
 			return products;
 		} catch (Exception e) {
-			throw new DbException(e + " ::#:: Problem in DB connection or in DB operation @Products");
+			throw new DbException(e + " ::#:: Problem in DB operation @Products");
 		}
 	}
 
 	@Override
-	public ProductsVO selectOne() throws DbException {
+	public ProductsVO selectOne(ProductsVO productsVO) throws DbException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -51,6 +48,23 @@ public class ProductsDaoImpl implements ProductsDao {
 	public int delete(ProductsVO t) throws DbException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<ProductsVO> selectFirstFive() throws DbException {
+		try {
+			Session session = DbSession.sessionStart();
+
+			Query query = session.createQuery("from ProductsVO");
+			query.setFirstResult(0);
+			query.setMaxResults(5);
+			List<ProductsVO> products = (List<ProductsVO>) query.getResultList();
+
+			DbSession.sessionEnd();
+			return products;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @Products");
+		}
 	}
 
 }

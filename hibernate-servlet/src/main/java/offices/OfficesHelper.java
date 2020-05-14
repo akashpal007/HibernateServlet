@@ -1,6 +1,7 @@
 package offices;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OfficesHelper {
 
@@ -17,6 +18,17 @@ public class OfficesHelper {
 			System.out.println(e);
 		}
 		return offices;
+	}
+
+	public List<OfficesVO> getFirstFiveCustomers() throws Exception {
+		try {
+			List<OfficesVO> offices = null;
+			OfficesDao officesDao = getOfficesDao();
+			offices = (List<OfficesVO>) officesDao.selectFirstFive();
+			return offices;
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
 	}
 
 }

@@ -3,14 +3,12 @@ package productLines;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import base.DbException;
-import base.GetSessionFactory;
+import base.DbSession;
 
 public class ProductLinesDaoImpl implements ProductLinesDao {
-	private SessionFactory sessionFactory = GetSessionFactory.getSessionFactory();
 
 	@Override
 	public int insert(ProductLinesVO t) throws DbException {
@@ -27,22 +25,20 @@ public class ProductLinesDaoImpl implements ProductLinesDao {
 	@Override
 	public List<ProductLinesVO> selectAll() throws DbException {
 		try {
-			Session session = sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = DbSession.sessionStart();
 
 			Query query = session.createQuery("from ProductLinesVO");
 			List<ProductLinesVO> productLines = (List<ProductLinesVO>) query.getResultList();
 
-			session.getTransaction().commit();
-			session.close();
+			DbSession.sessionEnd();
 			return productLines;
 		} catch (Exception e) {
-			throw new DbException(e + " ::#:: Problem in DB connection or in DB operation @ProductLines");
+			throw new DbException(e + " ::#:: Problem in DB operation @ProductLines");
 		}
 	}
 
 	@Override
-	public ProductLinesVO selectOne() throws DbException {
+	public ProductLinesVO selectOne(ProductLinesVO productLinesVO) throws DbException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -51,6 +47,23 @@ public class ProductLinesDaoImpl implements ProductLinesDao {
 	public int delete(ProductLinesVO t) throws DbException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<ProductLinesVO> selectFirstFive() throws DbException {
+		try {
+			Session session = DbSession.sessionStart();
+
+			Query query = session.createQuery("from ProductLinesVO");
+			query.setFirstResult(0);
+			query.setMaxResults(5);
+			List<ProductLinesVO> productLines = (List<ProductLinesVO>) query.getResultList();
+
+			DbSession.sessionEnd();
+			return productLines;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @ProductLines");
+		}
 	}
 
 }

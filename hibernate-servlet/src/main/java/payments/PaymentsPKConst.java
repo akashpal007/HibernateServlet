@@ -33,6 +33,9 @@ public class PaymentsPKConst implements Serializable {
 		this.customersVO = customersVO;
 		this.checkNumber = checkNumber;
 	}
+	public PaymentsPKConst() {
+		
+	}
 
 	@Override
 	public int hashCode() {

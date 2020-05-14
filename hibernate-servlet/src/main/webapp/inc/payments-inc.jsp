@@ -1,9 +1,10 @@
 <c:choose>
 	<c:when test="${not empty payments}">
-	<%-- ${employees} --%>
+	<%-- ${payments} --%>
+	<h4>Payments Data in JSON format</h4>
 	<div id="table-payments"></div>
 	</c:when>
-	<c:otherwise>There is no data present. Please make a DB call by clicking on Fetch Again</c:otherwise>
+	<!-- <c:otherwise>There is no data present. Please make a DB call by clicking on Fetch Again</c:otherwise> -->
 </c:choose>
 
 <script>

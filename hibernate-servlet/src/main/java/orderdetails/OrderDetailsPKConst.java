@@ -33,6 +33,10 @@ public class OrderDetailsPKConst implements Serializable {
 	@JoinColumn(name = "productCode")
 	private ProductsVO productsVO;
 
+	public OrderDetailsPKConst() {
+		
+	}
+	
 	public OrderDetailsPKConst(OrdersVO ordersVO, ProductsVO productsVO) {
 		this.ordersVO = ordersVO;
 		this.productsVO = productsVO;

@@ -16,4 +16,14 @@ public class ProductsHelper {
 			throw new Exception(e);
 		}
 	}
+	
+	public List<ProductsVO> getFirstFiveProducts() throws Exception {
+		try {
+			ProductsDao dao = getProductsDao();
+			List<ProductsVO> products = dao.selectFirstFive();
+			return products;
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
 }

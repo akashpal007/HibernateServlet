@@ -17,4 +17,14 @@ public class PaymentsHelper {
 			throw new Exception(e);
 		}
 	}
+
+	public List<PaymentsVO> getFirstFivePayments() throws Exception {
+		try {
+			PaymentsDao dao = getPaymentsDao();
+			List<PaymentsVO> payments = dao.selectFirstFive();
+			return payments;
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
 }

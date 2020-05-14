@@ -50,7 +50,7 @@
 				<div class="card-body">
 					<jsp:include page="inc/customers-inc.jsp" />  
 					<br> <a href="customersselectall" class="btn btn-primary">Fetch
-						Again</a>
+						All</a>
 				</div>
 			</div>
 		</div>
@@ -68,7 +68,7 @@
 				<div class="card-body">
 					<jsp:include page="inc/employees-inc.jsp" /> 
 					<br> <a href="employeesselectall" class="btn btn-primary">Fetch
-						Again</a>
+						All</a>
 				</div>
 			</div>
 		</div>
@@ -86,7 +86,7 @@
 				<div class="card-body">
 					<jsp:include page="inc/offices-inc.jsp" /> 
 					<br> <a href="officesselectall" class="btn btn-primary">Fetch
-						Again</a>
+						All</a>
 				</div>
 			</div>
 		</div>
@@ -104,7 +104,7 @@
 				<div class="card-body">
 					<jsp:include page="inc/orders-inc.jsp" /> 
 					<br> <a href="ordersselectall" class="btn btn-primary">Fetch
-						Again</a>
+						All</a>
 				</div>
 			</div>
 		</div>
@@ -122,7 +122,7 @@
 				<div class="card-body">
 					<jsp:include page="inc/orderdetails-inc.jsp" /> 
 					<br> <a href="orderdetailsselectall" class="btn btn-primary">Fetch
-						Again</a>
+						All</a>
 				</div>
 			</div>
 		</div>
@@ -140,7 +140,7 @@
 				<div class="card-body">
 					<jsp:include page="inc/payments-inc.jsp" /> 
 					<br> <a href="paymentsselectall" class="btn btn-primary">Fetch
-						Again</a>
+						All</a>
 				</div>
 			</div>
 		</div>
@@ -158,7 +158,7 @@
 				<div class="card-body">
 					<jsp:include page="inc/productlines-inc.jsp" /> 
 					<br> <a href="productlinesselectall" class="btn btn-primary">Fetch
-						Again</a>
+						All</a>
 				</div>
 			</div>
 		</div>
@@ -176,7 +176,7 @@
 				<div class="card-body">
 					<jsp:include page="inc/products-inc.jsp" /> 
 					<br> <a href="productsselectall" class="btn btn-primary">Fetch
-						Again</a>
+						All</a>
 				</div>
 			</div>
 		</div>

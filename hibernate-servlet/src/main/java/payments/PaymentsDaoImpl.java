@@ -3,14 +3,12 @@ package payments;
 import java.util.List;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import base.DbException;
-import base.GetSessionFactory;
+import base.DbSession;
 
 public class PaymentsDaoImpl implements PaymentsDao {
-	private SessionFactory sessionFactory = GetSessionFactory.getSessionFactory();
 
 	@Override
 	public int insert(PaymentsVO t) throws DbException {
@@ -27,22 +25,20 @@ public class PaymentsDaoImpl implements PaymentsDao {
 	@Override
 	public List<PaymentsVO> selectAll() throws DbException {
 		try {
-			Session session = sessionFactory.openSession();
-			session.beginTransaction();
+			Session session = DbSession.sessionStart();
 
 			Query query = session.createQuery("from PaymentsVO");
 			List<PaymentsVO> payments = (List<PaymentsVO>) query.getResultList();
 
-			session.getTransaction().commit();
-			session.close();
+			DbSession.sessionEnd();
 			return payments;
 		} catch (Exception e) {
-			throw new DbException(e + " ::#:: Problem in DB connection or in DB operation @OrderDetails");
+			throw new DbException(e + " ::#:: Problem in DB operation @OrderDetails");
 		}
 	}
 
 	@Override
-	public PaymentsVO selectOne() throws DbException {
+	public PaymentsVO selectOne(PaymentsVO paymentsVO) throws DbException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -51,6 +47,23 @@ public class PaymentsDaoImpl implements PaymentsDao {
 	public int delete(PaymentsVO t) throws DbException {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<PaymentsVO> selectFirstFive() throws DbException {
+		try {
+			Session session = DbSession.sessionStart();
+
+			Query query = session.createQuery("from PaymentsVO");
+			query.setFirstResult(0);
+			query.setMaxResults(5);
+			List<PaymentsVO> payments = (List<PaymentsVO>) query.getResultList();
+
+			DbSession.sessionEnd();
+			return payments;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @OrderDetails");
+		}
 	}
 
 }

@@ -33,8 +33,8 @@ public class PaymentsSelectAll extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			List<PaymentsVO> payments = new PaymentsHelper().getAllPayments();
-			
-			//json convertion
+
+			// json convertion
 			String json = new Gson().toJson(payments);
 
 			// set customer data in session attribute

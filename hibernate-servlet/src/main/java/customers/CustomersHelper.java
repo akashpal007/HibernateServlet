@@ -4,6 +4,7 @@
 package customers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author akash
@@ -15,14 +16,29 @@ public class CustomersHelper {
 	}
 
 	public ArrayList<CustomersVO> getAllCustomers() throws Exception {
-		ArrayList<CustomersVO> customers = null;
 		try {
+			ArrayList<CustomersVO> customers = null;
+
 			CustomersDao customersDao = getCustomerDao();
 			customers = (ArrayList<CustomersVO>) customersDao.selectAll();
-		}catch (Exception e) {
+
+			return customers;
+		} catch (Exception e) {
 			throw new Exception(e);
 		}
-		return customers;
+	}
+
+	public List<CustomersVO> getFirstFiveCustomers() throws Exception {
+		try {
+			List<CustomersVO> customers = null;
+
+			CustomersDao customersDao = getCustomerDao();
+			customers = (List<CustomersVO>) customersDao.selectFirstFive();
+
+			return customers;
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
 	}
 
 }

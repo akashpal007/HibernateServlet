@@ -20,5 +20,16 @@ public class EmployeesHelper {
 		}
 		return employees;
 	}
+	
+	public List<EmployeesVO> getFirstFiveEmployees() throws Exception {
+		try {
+			List<EmployeesVO> employees = null;
+			EmployeesDao dao = getEmployeesDao();
+			employees = dao.selectFirstFive();
+			return employees;
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
 
 }

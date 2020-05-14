@@ -67,7 +67,7 @@
 
 			<ul class="list-unstyled CTAs">
 				<li><a href="admin.jsp" class="download">Admin Account</a></li>
-				<li><a href="devtool.jsp" class="article">DEV View</a></li>
+				<li><a href="DevToolHome" class="article">DEV View</a></li>
 			</ul>
 		</nav>
 
@@ -94,7 +94,7 @@
 							</li>
 							<li class="nav-item"><a class="nav-link" href="admin.jsp">Admin
 									Account</a></li>
-							<li class="nav-item"><a class="nav-link" href="devtool.jsp">DEV
+							<li class="nav-item"><a class="nav-link" href="DevToolHome">DEV
 									View</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="https://github.com/akashpal007/HibernateServlet/issues">Submit
@@ -103,7 +103,7 @@
 					</div>
 				</div>
 			</nav>
-			<!-- Body -->
+			<!-- Body----------------------------------------------------------------------------------------------------------------------------------------------- -->
 			<div id="aboutSection" class="container-fluid details">
 				<h2>About</h2>
 
@@ -146,8 +146,8 @@
 									</div>
 									<br>
 									<button type="button" class="btn btn-primary"
-										data-toggle="modal" data-target="#customersTableModal">See Structure
-									</button>
+										data-toggle="modal" data-target="#customersTableModal">See
+										Structure</button>
 								</div>
 							</div>
 
@@ -212,7 +212,10 @@
 						</div>
 
 						<!-- Modal body -->
-						<div class="modal-body"><img src="pic/customers.jpg" class="img-fluid" alt="Customers Table UML img"></div>
+						<div class="modal-body">
+							<img src="pic/customers.jpg" class="img-fluid"
+								alt="Customers Table UML img">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -245,8 +248,8 @@
 									</div>
 									<br>
 									<button type="button" class="btn btn-primary"
-										data-toggle="modal" data-target="#employeesTableModal">See Structure
-									</button>
+										data-toggle="modal" data-target="#employeesTableModal">See
+										Structure</button>
 								</div>
 							</div>
 
@@ -299,7 +302,10 @@
 						</div>
 
 						<!-- Modal body -->
-						<div class="modal-body"><img src="pic/employees.jpg" class="img-fluid" alt="Employees Table UML img"></div>
+						<div class="modal-body">
+							<img src="pic/employees.jpg" class="img-fluid"
+								alt="Employees Table UML img">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -327,8 +333,8 @@
 									</div>
 									<br>
 									<button type="button" class="btn btn-primary"
-										data-toggle="modal" data-target="#officesTableModal">See Structure
-									</button>
+										data-toggle="modal" data-target="#officesTableModal">See
+										Structure</button>
 								</div>
 							</div>
 
@@ -383,7 +389,10 @@
 						</div>
 
 						<!-- Modal body -->
-						<div class="modal-body"><img src="pic/offices.jpg" class="img-fluid" alt="Offices Table UML img"></div>
+						<div class="modal-body">
+							<img src="pic/offices.jpg" class="img-fluid"
+								alt="Offices Table UML img">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -412,8 +421,8 @@
 									</div>
 									<br>
 									<button type="button" class="btn btn-primary"
-										data-toggle="modal" data-target="#ordersTableModal">See Structure
-									</button>
+										data-toggle="modal" data-target="#ordersTableModal">See
+										Structure</button>
 								</div>
 							</div>
 
@@ -463,7 +472,10 @@
 						</div>
 
 						<!-- Modal body -->
-						<div class="modal-body"><img src="pic/orders.jpg" class="img-fluid" alt="Orders Table UML img"></div>
+						<div class="modal-body">
+							<img src="pic/orders.jpg" class="img-fluid"
+								alt="Orders Table UML img">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -494,8 +506,8 @@
 									</div>
 									<br>
 									<button type="button" class="btn btn-primary"
-										data-toggle="modal" data-target="#orderdetailsTableModal">See Structure
-									</button>
+										data-toggle="modal" data-target="#orderdetailsTableModal">See
+										Structure</button>
 								</div>
 							</div>
 
@@ -522,14 +534,11 @@
 											@ManyToOne <br> @JoinColumn(name = "orderNumber") <br>
 											private OrdersVO orderNumber; <br> <br> @ManyToOne
 											<br> @JoinColumn(name = "productCode") <br> private
-											ProductsVO productCode; <br> <i>//It must have a arg
-												constructor</i> <br> public OrderDetailsPKConst(OrdersVO
-											orderNumber, ProductsVO productCode) { <br>
-											this.orderNumber = orderNumber; <br> this.productCode =
-											productCode; <br> } <br> <br> <i>//It must
+											ProductsVO productCode; <br> <i>//It must have a no-arg
+												constructor</i> <br> public OrderDetailsPKConst() {} <br> <br> <i>//It must
 												define equals() and hashCode() methods </i> <br> public int
 											hashCode(){....} <br> public boolean equals(Object
-											obj){....}
+											obj){....}<br>}
 										</code>
 									</div>
 								</div>
@@ -550,7 +559,10 @@
 						</div>
 
 						<!-- Modal body -->
-						<div class="modal-body"><img src="pic/ordersdetails.jpg" class="img-fluid" alt="Orderdetails Table UML img"></div>
+						<div class="modal-body">
+							<img src="pic/ordersdetails.jpg" class="img-fluid"
+								alt="Orderdetails Table UML img">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -577,8 +589,8 @@
 									</div>
 									<br>
 									<button type="button" class="btn btn-primary"
-										data-toggle="modal" data-target="#paymentsTableModal">See Structure
-									</button>
+										data-toggle="modal" data-target="#paymentsTableModal">See
+										Structure</button>
 								</div>
 							</div>
 
@@ -605,7 +617,9 @@
 											NOT NULL") <br> private double amount; <br>}<br>
 											<br> <br>public class PaymentsPKConst implements
 											Serializable { <br> private CustomersVO customersVO; <br>
-											<br> private String checkNumber; <br>}<br> <b><i>In
+											private String checkNumber; <br>public PaymentsPKConst()
+											{}<br> public int hashCode() {....}<br>public
+											boolean equals(Object obj) {....)<br> }<br> <b><i>In
 													order to define the composite primary keys, we should
 													follow some rules:
 													<ul>
@@ -636,7 +650,10 @@
 						</div>
 
 						<!-- Modal body -->
-						<div class="modal-body"><img src="pic/payments.jpg" class="img-fluid" alt="Payments Table UML img"></div>
+						<div class="modal-body">
+							<img src="pic/payments.jpg" class="img-fluid"
+								alt="Payments Table UML img">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -662,8 +679,8 @@
 									</div>
 									<br>
 									<button type="button" class="btn btn-primary"
-										data-toggle="modal" data-target="#productlinesTableModal">See Structure
-									</button>
+										data-toggle="modal" data-target="#productlinesTableModal">See
+										Structure</button>
 								</div>
 							</div>
 
@@ -706,7 +723,10 @@
 						</div>
 
 						<!-- Modal body -->
-						<div class="modal-body"><img src="pic/productlines.jpg" class="img-fluid" alt="Product-lines Table UML img"></div>
+						<div class="modal-body">
+							<img src="pic/productlines.jpg" class="img-fluid"
+								alt="Product-lines Table UML img">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -737,8 +757,8 @@
 									</div>
 									<br>
 									<button type="button" class="btn btn-primary"
-										data-toggle="modal" data-target="#productsTableModal">See Structure
-									</button>
+										data-toggle="modal" data-target="#productsTableModal">See
+										Structure</button>
 								</div>
 							</div>
 
@@ -794,7 +814,10 @@
 						</div>
 
 						<!-- Modal body -->
-						<div class="modal-body"><img src="pic/products.jpg" class="img-fluid" alt="Products Table UML img"></div>
+						<div class="modal-body">
+							<img src="pic/products.jpg" class="img-fluid"
+								alt="Products Table UML img">
+						</div>
 					</div>
 				</div>
 			</div>
