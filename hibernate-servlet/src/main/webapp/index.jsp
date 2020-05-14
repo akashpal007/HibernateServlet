@@ -106,7 +106,28 @@
 			<!-- Body----------------------------------------------------------------------------------------------------------------------------------------------- -->
 			<div id="aboutSection" class="container-fluid details">
 				<h2>About</h2>
-
+				<div class="container-fluid mx-3 p-3">
+					<p class="text-dark">
+						This project is mead to understand how Hibernate works along with
+						Object Relation Mapping, HQL, HCQL, MVC architecture, version
+						control, etc.<br> Dev view initially shows 5 rows in JSON format so
+						that we can understand how data come from DB. The Admin account
+						can do various operations. (View and Controller are not written
+						yet All the Models are written)<b> <br>
+						<br> In my project, I separate the model into 3 sections
+						Helper, Dao, DaoImpl. Every controller calls "Helper" and the
+						helper is responsible to communicate with Dao and get back a
+						response to the controller. <br>
+						<br> I made a custom exception class named DbException. If
+						there is any problem with connection or DB operation then it
+						throws DbException. <br>
+						<br> Each Dao Interface extends BaseDao Interface. BaseDao
+						comprises a basic Db operation methods definition. <br>
+						<br> There is a class named DbSession which has two static
+						methods which will give session instance after starting a
+						transaction and commit the transaction and close the session. <br></b>
+					</p>
+				</div>
 			</div>
 			<div id="DBStructure" class="container-fluid details">
 				<h2>DBStructure</h2>
@@ -534,11 +555,11 @@
 											@ManyToOne <br> @JoinColumn(name = "orderNumber") <br>
 											private OrdersVO orderNumber; <br> <br> @ManyToOne
 											<br> @JoinColumn(name = "productCode") <br> private
-											ProductsVO productCode; <br> <i>//It must have a no-arg
-												constructor</i> <br> public OrderDetailsPKConst() {} <br> <br> <i>//It must
-												define equals() and hashCode() methods </i> <br> public int
-											hashCode(){....} <br> public boolean equals(Object
-											obj){....}<br>}
+											ProductsVO productCode; <br> <i>//It must have a
+												no-arg constructor</i> <br> public OrderDetailsPKConst() {}
+											<br> <br> <i>//It must define equals() and
+												hashCode() methods </i> <br> public int hashCode(){....} <br>
+											public boolean equals(Object obj){....}<br>}
 										</code>
 									</div>
 								</div>
@@ -851,7 +872,7 @@
 
 			</div>
 			<div id="TechnologyAndTools" class="container-fluid details">
-				<h2>TechnologyAndTools</h2>
+				<h2>Technology And Tools used</h2>
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-3 d-flex align-items-stretch">
