@@ -10,9 +10,18 @@ import base.DbSession;
 
 public class OrdersDaoImpl implements OrdersDao {
 	@Override
-	public int insert(OrdersVO t) throws DbException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insert(OrdersVO ordersVO) throws DbException {
+		try {
+			int success = -1;
+			Session dbSession = DbSession.sessionStart();
+
+			success = (int) dbSession.save(ordersVO);
+
+			DbSession.sessionEnd();
+			return success;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @Orders Insert");
+		}
 	}
 
 	@Override

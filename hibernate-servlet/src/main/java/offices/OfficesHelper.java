@@ -9,6 +9,15 @@ public class OfficesHelper {
 		return new OfficesDaoImpl();
 	}
 
+	public int saveOffice(OfficesVO officesVO) throws Exception {
+		try {
+			OfficesDao dao = getOfficesDao();
+			return dao.insert(officesVO);
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+
 	public ArrayList<OfficesVO> getAllCustomers() {
 		ArrayList<OfficesVO> offices = null;
 		try {

@@ -15,6 +15,15 @@ public class CustomersHelper {
 		return new CustomersDaoImpl();
 	}
 
+	public int saveCustomer(CustomersVO customersVO) throws Exception {
+		try {
+			CustomersDao dao = getCustomerDao();
+			return dao.insert(customersVO);
+		}catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+	
 	public ArrayList<CustomersVO> getAllCustomers() throws Exception {
 		try {
 			ArrayList<CustomersVO> customers = null;

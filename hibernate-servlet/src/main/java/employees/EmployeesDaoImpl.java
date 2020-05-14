@@ -11,9 +11,18 @@ import base.DbSession;
 public class EmployeesDaoImpl implements EmployeesDao {
 
 	@Override
-	public int insert(EmployeesVO t) throws DbException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insert(EmployeesVO employeesVO) throws DbException {
+		try {
+			int success = -1;
+			Session dbSession = DbSession.sessionStart();
+			
+			success = (int) dbSession.save(employeesVO);
+
+			DbSession.sessionEnd();
+			return success;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @Employees Insert");
+		}
 	}
 
 	@Override

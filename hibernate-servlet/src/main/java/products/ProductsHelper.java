@@ -7,6 +7,15 @@ public class ProductsHelper {
 		return new ProductsDaoImpl();
 	}
 
+	public int saveProduct(ProductsVO productsVO) throws Exception {
+		try {
+			ProductsDao dao = getProductsDao();
+			return dao.insert(productsVO);
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+
 	public List<ProductsVO> getAllProducts() throws Exception {
 		try {
 			ProductsDao dao = getProductsDao();
@@ -16,7 +25,7 @@ public class ProductsHelper {
 			throw new Exception(e);
 		}
 	}
-	
+
 	public List<ProductsVO> getFirstFiveProducts() throws Exception {
 		try {
 			ProductsDao dao = getProductsDao();

@@ -11,9 +11,18 @@ import base.DbSession;
 public class PaymentsDaoImpl implements PaymentsDao {
 
 	@Override
-	public int insert(PaymentsVO t) throws DbException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insert(PaymentsVO paymentsVO) throws DbException {
+		try {
+			int success = -1;
+			Session dbSession = DbSession.sessionStart();
+
+			success = (int) dbSession.save(paymentsVO);
+
+			DbSession.sessionEnd();
+			return success;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @Payments Insert");
+		}
 	}
 
 	@Override

@@ -11,9 +11,18 @@ import base.DbSession;
 public class ProductLinesDaoImpl implements ProductLinesDao {
 
 	@Override
-	public int insert(ProductLinesVO t) throws DbException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insert(ProductLinesVO productLinesVO) throws DbException {
+		try {
+			int success = -1;
+			Session dbSession = DbSession.sessionStart();
+
+			success = (int) dbSession.save(productLinesVO);
+
+			DbSession.sessionEnd();
+			return success;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @ProductLines Insert");
+		}
 	}
 
 	@Override

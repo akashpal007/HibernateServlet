@@ -7,6 +7,15 @@ public class OrdersHelper {
 		return new OrdersDaoImpl();
 	}
 
+	public int saveOrder(OrdersVO ordersVO) throws Exception {
+		try {
+			OrdersDao dao = getOrdersDao();
+			return dao.insert(ordersVO);
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+
 	public List<OrdersVO> getAllOrders() throws Exception {
 		try {
 			OrdersDao dao = getOrdersDao();
@@ -16,7 +25,7 @@ public class OrdersHelper {
 			throw new Exception(e);
 		}
 	}
-	
+
 	public List<OrdersVO> getFirstFiveOrders() throws Exception {
 		try {
 			OrdersDao dao = getOrdersDao();

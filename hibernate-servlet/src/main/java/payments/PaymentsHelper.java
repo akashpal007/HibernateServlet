@@ -8,6 +8,15 @@ public class PaymentsHelper {
 		return new PaymentsDaoImpl();
 	}
 
+	public int savePayment(PaymentsVO paymentsVO) throws Exception {
+		try {
+			PaymentsDao dao = getPaymentsDao();
+			return dao.insert(paymentsVO);
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+
 	public List<PaymentsVO> getAllPayments() throws Exception {
 		try {
 			PaymentsDao dao = getPaymentsDao();

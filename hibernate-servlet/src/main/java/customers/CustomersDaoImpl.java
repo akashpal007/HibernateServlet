@@ -11,9 +11,18 @@ import base.DbSession;
 public class CustomersDaoImpl implements CustomersDao {
 
 	@Override
-	public int insert(CustomersVO t) throws DbException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insert(CustomersVO customersVO) throws DbException {
+		try {
+			int success = -1;
+			Session dbSession = DbSession.sessionStart();
+			
+			success = (int) dbSession.save(customersVO);
+
+			DbSession.sessionEnd();
+			return success;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @Customers Insert");
+		}
 	}
 
 	@Override

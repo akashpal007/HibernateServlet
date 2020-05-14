@@ -1,13 +1,19 @@
 package employees;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import customers.CustomersVO;
 
 public class EmployeesHelper {
 	private EmployeesDao getEmployeesDao() {
 		return new EmployeesDaoImpl();
+	}
+
+	public int saveEmployee(EmployeesVO employeesVO) throws Exception {
+		try {
+			EmployeesDao dao = getEmployeesDao();
+			return dao.insert(employeesVO);
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
 	}
 
 	public List<EmployeesVO> getAllEmployees() throws Exception {
@@ -20,7 +26,7 @@ public class EmployeesHelper {
 		}
 		return employees;
 	}
-	
+
 	public List<EmployeesVO> getFirstFiveEmployees() throws Exception {
 		try {
 			List<EmployeesVO> employees = null;

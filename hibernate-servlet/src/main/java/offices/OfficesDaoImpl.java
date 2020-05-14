@@ -1,6 +1,5 @@
 package offices;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -12,9 +11,18 @@ import base.DbSession;
 public class OfficesDaoImpl implements OfficesDao {
 
 	@Override
-	public int insert(OfficesVO t) throws DbException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insert(OfficesVO officesVO) throws DbException {
+		try {
+			int success = -1;
+			Session dbSession = DbSession.sessionStart();
+
+			success = (int) dbSession.save(officesVO);
+
+			DbSession.sessionEnd();
+			return success;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @Offices Insert");
+		}
 	}
 
 	@Override
