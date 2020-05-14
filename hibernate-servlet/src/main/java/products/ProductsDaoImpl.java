@@ -35,7 +35,6 @@ public class ProductsDaoImpl implements ProductsDao {
 	public List<ProductsVO> selectAll() throws DbException {
 		try {
 			Session session = DbSession.sessionStart();
-			session.beginTransaction();
 
 			Query query = session.createQuery("from ProductsVO");
 			List<ProductsVO> products = (List<ProductsVO>) query.getResultList();
