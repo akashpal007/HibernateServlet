@@ -15,7 +15,7 @@ public class CustomersDaoImpl implements CustomersDao {
 		try {
 			int success = -1;
 			Session dbSession = DbSession.sessionStart();
-			
+
 			success = (int) dbSession.save(customersVO);
 
 			DbSession.sessionEnd();
@@ -26,8 +26,37 @@ public class CustomersDaoImpl implements CustomersDao {
 	}
 
 	@Override
-	public int update(CustomersVO t) throws DbException {
-		return 0;
+	public int update(CustomersVO customersVO) throws DbException {
+		try {
+			int success = -1;
+			Session dbSession = DbSession.sessionStart();
+
+			String sql = "update CustomersVO set" + "customerName = :cName" + "contactFirstName = :cFirstName"
+					+ "contactLastName =:cLastName " + "phone = :phone" + "addressLine1 = :addressLine1"
+					+ "addressLine2 = :addressLine2" + "city = :city" + "state = :state" + "postalCode = :postalCode"
+					+ "country = :country" + "employeesVO = :employeesVO" + "where customerNumber = :cNumber";
+
+			Query query = dbSession.createQuery(sql);
+
+			query.setParameter("cName", customersVO.getCustomerName());
+			query.setParameter("cFirstName", customersVO.getContactFirstName());
+			query.setParameter("cLastName", customersVO.getContactLastName());
+			query.setParameter("phone", customersVO.getPhone());
+			query.setParameter("addressLine1", customersVO.getAddressLine1());
+			query.setParameter("addressLine2", customersVO.getAddressLine2());
+			query.setParameter("city", customersVO.getCity());
+			query.setParameter("state", customersVO.getState());
+			query.setParameter("postalCode", customersVO.getPostalCode());
+			query.setParameter("country", customersVO.getCountry());
+			query.setParameter("employeesVO", customersVO.getEmployeesVO());
+			query.setParameter("cNumber", customersVO.getCustomerNumber());
+
+			success = query.executeUpdate();
+			DbSession.sessionEnd();
+			return success;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @Customers Update");
+		}
 	}
 
 	@Override
@@ -47,14 +76,31 @@ public class CustomersDaoImpl implements CustomersDao {
 
 	@Override
 	public CustomersVO selectOne(CustomersVO customersVO) throws DbException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			Session dbSession = DbSession.sessionStart();
+			customersVO = dbSession.get(CustomersVO.class, customersVO.getCustomerNumber());
+			DbSession.sessionEnd();
+			return customersVO;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @Customers selectOne");
+		}
 	}
 
 	@Override
-	public int delete(CustomersVO t) throws DbException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(CustomersVO customersVO) throws DbException {
+		try {
+			int success = -1;
+			Session dbSession = DbSession.sessionStart();
+			
+			Query query = dbSession.createQuery("Delete CustomersVO where customerNumber = :cNumber");
+			query.setParameter("cNumber", customersVO.getCustomerNumber());
+			success = query.executeUpdate();
+			
+			DbSession.sessionEnd();
+			return success;
+		}catch (Exception e) {
+			throw new DbException(e + "::#:: Problem in DB operation @Customers delete");
+		}
 	}
 
 	@Override

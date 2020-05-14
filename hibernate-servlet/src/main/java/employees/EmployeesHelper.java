@@ -7,6 +7,11 @@ public class EmployeesHelper {
 		return new EmployeesDaoImpl();
 	}
 
+	/**
+	 * @param employeesVO
+	 * @return int
+	 * @throws Exception
+	 */
 	public int saveEmployee(EmployeesVO employeesVO) throws Exception {
 		try {
 			EmployeesDao dao = getEmployeesDao();
@@ -16,6 +21,10 @@ public class EmployeesHelper {
 		}
 	}
 
+	/**
+	 * @return List<EmployeesVO>
+	 * @throws Exception
+	 */
 	public List<EmployeesVO> getAllEmployees() throws Exception {
 		List<EmployeesVO> employees = null;
 		try {
@@ -27,6 +36,10 @@ public class EmployeesHelper {
 		return employees;
 	}
 
+	/**
+	 * @return List<EmployeesVO>
+	 * @throws Exception
+	 */
 	public List<EmployeesVO> getFirstFiveEmployees() throws Exception {
 		try {
 			List<EmployeesVO> employees = null;
@@ -38,4 +51,31 @@ public class EmployeesHelper {
 		}
 	}
 
+	/**
+	 * @param employeesVO
+	 * @return int
+	 * @throws Exception
+	 */
+	public int update(EmployeesVO employeesVO) throws Exception {
+		try {
+			EmployeesDao dao = getEmployeesDao();
+			return dao.update(employeesVO);
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
+
+	/**
+	 * @param employeesVO
+	 * @return int
+	 * @throws Exception
+	 */
+	public int delete(EmployeesVO employeesVO) throws Exception {
+		try {
+			EmployeesDao dao = getEmployeesDao();
+			return dao.delete(employeesVO);
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
 }

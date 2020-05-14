@@ -15,7 +15,7 @@ public class EmployeesDaoImpl implements EmployeesDao {
 		try {
 			int success = -1;
 			Session dbSession = DbSession.sessionStart();
-			
+
 			success = (int) dbSession.save(employeesVO);
 
 			DbSession.sessionEnd();
@@ -26,9 +26,32 @@ public class EmployeesDaoImpl implements EmployeesDao {
 	}
 
 	@Override
-	public int update(EmployeesVO t) throws DbException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(EmployeesVO employeesVO) throws DbException {
+		try {
+			int success = -1;
+			Session dbSession = DbSession.sessionStart();
+
+			String sql = "update EmployeesVO set" + "lastName = :lastName" + "firstName = :firstName"
+					+ "extension = :extension" + "email = :email" + "officesVO = :officesVO"
+					+ "employeesVO = :employeesVO" + "jobTitle = :jobTitle" + "where employeeNumber = :employeeNumber";
+
+			Query query = dbSession.createQuery(sql);
+
+			query.setParameter("lastName", employeesVO.getLastName());
+			query.setParameter("firstName", employeesVO.getFirstName());
+			query.setParameter("extension", employeesVO.getExtension());
+			query.setParameter("email", employeesVO.getEmail());
+			query.setParameter("officesVO", employeesVO.getOfficesVO());
+			query.setParameter("employeesVO", employeesVO.getEmployeesVO());
+			query.setParameter("jobTitle", employeesVO.getJobTitle());
+			query.setParameter("employeeNumber", employeesVO.getEmployeeNumber());
+
+			success = query.executeUpdate();
+			DbSession.sessionEnd();
+			return success;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @Employees Update");
+		}
 	}
 
 	@Override
@@ -48,14 +71,31 @@ public class EmployeesDaoImpl implements EmployeesDao {
 
 	@Override
 	public EmployeesVO selectOne(EmployeesVO employeesVO) throws DbException {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			Session dbSession = DbSession.sessionStart();
+			employeesVO = dbSession.get(EmployeesVO.class, employeesVO.getEmployeeNumber());
+			DbSession.sessionEnd();
+			return employeesVO;
+		} catch (Exception e) {
+			throw new DbException(e + " ::#:: Problem in DB operation @Employees selectOne");
+		}
 	}
 
 	@Override
-	public int delete(EmployeesVO t) throws DbException {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(EmployeesVO employeesVO) throws DbException {
+		try {
+			int success = -1;
+			Session dbSession = DbSession.sessionStart();
+
+			Query query = dbSession.createQuery("Delete EmployeesVO where employeeNumber = :eNumber");
+			query.setParameter("eNumber", employeesVO.getEmployeeNumber());
+			success = query.executeUpdate();
+
+			DbSession.sessionEnd();
+			return success;
+		} catch (Exception e) {
+			throw new DbException(e + "::#:: Problem in DB operation @Offices delete");
+		}
 	}
 
 	@Override

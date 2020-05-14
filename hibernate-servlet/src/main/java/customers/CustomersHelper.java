@@ -15,6 +15,11 @@ public class CustomersHelper {
 		return new CustomersDaoImpl();
 	}
 
+	/**
+	 * @param customersVO
+	 * @return int
+	 * @throws Exception
+	 */
 	public int saveCustomer(CustomersVO customersVO) throws Exception {
 		try {
 			CustomersDao dao = getCustomerDao();
@@ -24,6 +29,10 @@ public class CustomersHelper {
 		}
 	}
 	
+	/**
+	 * @return ArrayList<CustomersVO>
+	 * @throws Exception
+	 */
 	public ArrayList<CustomersVO> getAllCustomers() throws Exception {
 		try {
 			ArrayList<CustomersVO> customers = null;
@@ -37,6 +46,10 @@ public class CustomersHelper {
 		}
 	}
 
+	/**
+	 * @return List<CustomersVO>
+	 * @throws Exception
+	 */
 	public List<CustomersVO> getFirstFiveCustomers() throws Exception {
 		try {
 			List<CustomersVO> customers = null;
@@ -49,5 +62,32 @@ public class CustomersHelper {
 			throw new Exception(e);
 		}
 	}
+	
+	/**
+	 * @param customersVO
+	 * @return int
+	 * @throws Exception
+	 */
+	public int update(CustomersVO customersVO) throws Exception{
+		try {
+			CustomersDao dao = getCustomerDao();
+			return dao.update(customersVO);
+		}catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
 
+	/**
+	 * @param customersVO
+	 * @return int
+	 * @throws Exception
+	 */
+	public int delete(CustomersVO customersVO) throws Exception{
+		try {
+			CustomersDao dao = getCustomerDao();
+			return dao.delete(customersVO);
+		}catch (Exception e) {
+			throw new Exception(e);
+		}
+	}
 }
